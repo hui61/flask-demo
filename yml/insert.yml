@@ -1,0 +1,20 @@
+  This is user insert API
+    ---
+  tags:
+    - User insert API
+  parameters:
+    - name: user_name
+      in: 'formData'
+      type: 'string'
+      required: true
+      description: The user name
+    - name: user_password
+      in: 'formData'
+      type: 'string'
+      required: true
+      description: The User password
+  responses:
+    500:
+      description: Error
+    200:
+      description: The inserted user

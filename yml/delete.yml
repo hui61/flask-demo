@@ -1,0 +1,15 @@
+  This is user delete API
+    ---
+  tags:
+    - User delete API
+  parameters:
+    - name: user_id
+      in: path
+      type: "string"
+      required: true
+      description: The user id
+  responses:
+    500:
+      description: Error
+    200:
+      description: 1(success),0(fail)

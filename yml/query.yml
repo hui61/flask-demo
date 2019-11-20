@@ -1,0 +1,15 @@
+  This is user query API
+    ---
+  tags:
+    - User query API
+  parameters:
+    - name: user_id
+      in: path
+      type: "string"
+      required: true
+      description: The user id
+  responses:
+    500:
+      description: Error
+    200:
+      description: A user or all users
