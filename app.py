@@ -9,13 +9,7 @@ app = Flask(__name__)
 app.config.from_object(config)
 Swagger(app)
 db.init_app(app)
-
-
-@app.route('/api/user/create', methods=['GET'])
-@swag_from('yml/create.yml')
-def create():
-    db.create_all(app=app)
-    return 'user table create success'
+db.create_all(app=app)
 
 
 @app.route('/api/user/<user_id>', methods=['GET'])
@@ -32,7 +26,7 @@ def query(user_id):
         return user.__repr__()
 
 
-@app.route('/api/user/insert/', methods=['POST'])
+@app.route('/api/user/', methods=['POST'])
 @swag_from('yml/insert.yml')
 def insert():
     if request.method == 'POST':
@@ -44,7 +38,7 @@ def insert():
         return user.__repr__() + ' add successfully'
 
 
-@app.route('/api/user/edit/', methods=['PUT'])
+@app.route('/api/user/', methods=['PUT'])
 @swag_from('yml/edit.yml')
 def edit():
     if request.method == 'PUT':
@@ -56,7 +50,7 @@ def edit():
         return update_status.__repr__()
 
 
-@app.route('/api/user/delete/<user_id>', methods=['DELETE'])
+@app.route('/api/user/<user_id>', methods=['DELETE'])
 @swag_from('yml/delete.yml')
 def delete(user_id):
     if request.method == 'DELETE':
