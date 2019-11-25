@@ -13,7 +13,7 @@ db.init_app(app)
 
 @app.route('/')
 def index():
-    return 'Please try http://127.0.0.1:5000/apidocs to call api'
+    return 'Please try http://127.0.0.1:12000/apidocs to call api'
 
 
 @app.route('/api/user/<user_id>', methods=['GET'])
