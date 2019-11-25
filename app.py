@@ -4,13 +4,16 @@ from flask import Flask, request
 import config
 from db import db
 from models import User
-import os
 
 app = Flask(__name__)
 app.config.from_object(config)
 Swagger(app)
 db.init_app(app)
-db.create_all(app=app)
+
+
+@app.route('/')
+def index():
+    return 'Please try http://127.0.0.1:5000/apidocs to call api'
 
 
 @app.route('/api/user/<user_id>', methods=['GET'])
@@ -61,6 +64,4 @@ def delete(user_id):
 
 
 if __name__ == '__main__':
-    # Bind to PORT if defined, otherwise default to 5000.
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0')
