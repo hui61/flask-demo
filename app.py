@@ -19,7 +19,7 @@ def index():
 @app.route('/api/user/<user_id>', methods=['GET'])
 @swag_from('yml/query.yml')
 def query(user_id):
-    if user_id == 'all':
+    if user_id is None:
         users = User.query.all()
         user_string = ''
         for user in users:
@@ -42,11 +42,10 @@ def insert():
         return user.__repr__() + ' add successfully'
 
 
-@app.route('/api/user/', methods=['PUT'])
+@app.route('/api/user/<user_id>', methods=['PUT'])
 @swag_from('yml/edit.yml')
-def edit():
+def edit(user_id):
     if request.method == 'PUT':
-        user_id = request.form['user_id']
         user_name = request.form['user_name']
         user_password = request.form['user_password']
         update_status = User.query.filter(User.id == user_id).update({'name': user_name, 'password': user_password})

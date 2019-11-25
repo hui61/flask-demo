@@ -4,9 +4,8 @@
     - User edit API
   parameters:
     - name: user_id
-      in: 'formData'
-      type: 'integer'
-      format: 'int64'
+      in: path
+      type: "string"
       required: true
       description: The user id
     - name: user_name
