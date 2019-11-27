@@ -1,9 +1,0 @@
-  This is user table create API
-    ---
-  tags:
-    - User table create API
-  responses:
-    500:
-      description: Error
-    200:
-      description: User table create successfully

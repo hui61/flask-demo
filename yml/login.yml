@@ -1,7 +1,7 @@
-  This is user insert API
+  This is user login API
     ---
   tags:
-    - User insert API
+    - User login API
   parameters:
     - name: user_name
       in: 'formData'
@@ -13,14 +13,8 @@
       type: 'string'
       required: true
       description: The User password
-    - name: user_role
-      in: 'formData'
-      type: 'integer'
-      format: 'int64'
-      required: true
-      description: The user role
   responses:
     500:
-      description: Error
+      description: Fail
     200:
-      description: The inserted user
+      description: Success

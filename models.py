@@ -7,6 +7,8 @@ class User(db.Model):
     id = db.Column(db.Integer(), primary_key=True)  # id primary key
     name = db.Column(db.String(20), nullable=False)  # user name
     password = db.Column(db.String(42), nullable=False)  # user password
+    role = db.Column(db.Integer(), nullable=False, default=0)  # user role
 
     def __repr__(self):
-        return 'User[id=' + str(self.id) + ',name=' + self.name + ',password=' + self.password + ']'
+        return 'User[id=' + str(
+            self.id) + ',name=' + self.name + ',password=' + self.password + ',role=' + str(self.role) + ']'

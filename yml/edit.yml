@@ -17,7 +17,13 @@
       in: 'formData'
       type: 'string'
       required: true
-      description: The User password
+      description: The user password
+    - name: user_role
+      in: 'formData'
+      type: 'integer'
+      format: 'int64'
+      required: true
+      description: The user role
   responses:
     500:
       description: Error
