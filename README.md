@@ -8,9 +8,9 @@
 
 ## Ensure you can run this demo you need follow the steps below:
 
-1. Use git clone to download the demo
-1. Using cd flask-demo to go into the folder
-1. Use docker-compose up to start app
+1. Use ```git clone https://github.com/hui61/flask-demo.git``` to download the demo
+1. Using ```cd flask-demo``` to go into the folder
+1. Use ```docker-compose up``` to start app
 1. Visit the http://127.0.0.1:12000/apidocs to explore the demo
 
 Note: If you changed the code you need to use docker-compose up --build to rebuild and start
