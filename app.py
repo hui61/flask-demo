@@ -3,6 +3,7 @@ from flasgger.utils import swag_from
 from flask import Flask, request, session
 import config
 from db import db
+from decorator import login_validate, admin_validate
 from models import User
 
 app = Flask(__name__)
@@ -34,6 +35,7 @@ def login():
 
 @app.route('/api/user/<user_id>', methods=['GET'])
 @swag_from('yml/query.yml')
+@login_validate
 def query(user_id):
     if user_id is None:
         users = User.query.all()
@@ -48,6 +50,8 @@ def query(user_id):
 
 @app.route('/api/user/', methods=['POST'])
 @swag_from('yml/insert.yml')
+@login_validate
+@admin_validate
 def insert():
     if request.method == 'POST':
         user_name = request.form['user_name']
@@ -61,6 +65,8 @@ def insert():
 
 @app.route('/api/user/<user_id>', methods=['PUT'])
 @swag_from('yml/edit.yml')
+@login_validate
+@admin_validate
 def edit(user_id):
     if request.method == 'PUT':
         user_name = request.form['user_name']
@@ -74,6 +80,8 @@ def edit(user_id):
 
 @app.route('/api/user/<user_id>', methods=['DELETE'])
 @swag_from('yml/delete.yml')
+@login_validate
+@admin_validate
 def delete(user_id):
     if request.method == 'DELETE':
         delete_status = User.query.filter(User.id == user_id).delete()
@@ -88,12 +96,7 @@ def auth_required():
             if request.path != '/apidocs/':
                 if 'flasgger' not in request.path:
                     if 'apispec_1.json' not in request.path:
-                        if 'user_id' not in session:
-                            return 'Need login'
-                        else:
-                            user_role = session['user_role']
-                            if user_role == 0:
-                                return 'Your are not admin'
+                        pass
 
 
 if __name__ == '__main__':
